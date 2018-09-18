@@ -1,25 +1,39 @@
 #include <stdio.h>
-#include <stdio.h>
+#include <stdlib.h>
+
 int main(void)
 {
-    char c1, c2;
+    int tent, numJog1, numJog2;
     
-    printf("Descubra o caractere secreto (? para ajudar): ");
-    fflush(stdin);
+    printf("Digite um numero: ");
+    scanf("%d", &numJog1);
+
+    tent = 1;
     
-    c2 = getchar ();
-    
-    if(c2 == c1){
-        printf("Voce acertou!");
+    do{
+        printf("Tentativa %d: ", tent);
+        scanf("%d", &numJog2);
+        tent++;
+        
+        if (numJog2 == numJog1){
+            printf("Jogador 2 venceu\n\n");
+            if(tent == 1){
+                printf("Voce e foda!");
+            }
+            break;
+        }
+        else if (numJog2 < numJog1){
+            printf("O numero sorteado e maior...\n");
+        }
+        else if (numJog1 < numJog2){
+            printf("O numero sorteado e menor...\n");
+        }
+        else if(tent == 3){
+            printf("jogador 1 venceu\n\n");
+            break;
+        }
     }
-    else if(c2 == '?'){
-        printf("Neste jogo voce deve adivinhar o caractere!");
-    }
-    else{
-        printf("Voce errou o caractere!");
-    }
-    
-    puts("\n\n");
+    while (1);
     
     return 0;
 }
